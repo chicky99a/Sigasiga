@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+.DS_Store
+.sites-runtime/
+.pnpm-store/
+level-test-prototype/
+.env*
+!.env.example
