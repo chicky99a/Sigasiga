@@ -1,0 +1,208 @@
+@font-face {
+  font-family: 'Fredoka';
+  src: url('/assets/fonts/Fredoka-VariableFont_wdth-wght.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Fredoka';
+  /* Reserved until the actual handwritten font is supplied. Headings use assets. */
+  --font-handwritten: initial;
+  --composition-width: 1400px;
+  --page-gutter: 84px;
+  --body-size: 1.75rem;
+  --body-leading: 1.38;
+  --support-size: 1.5rem;
+  --label-size: 1.375rem;
+  --item-heading-size: 2.25rem;
+  --price-size: 2.625rem;
+}
+
+* { box-sizing: border-box; }
+/* Clip only at the viewport edge; artwork can still cross section boundaries. */
+html { overflow-x: clip; }
+body {
+  overflow-x: clip;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  font-weight: 300;
+  line-height: var(--body-leading);
+  color: #000;
+  background: #fff;
+}
+button, a { font: inherit; color: inherit; }
+button { border: 0; padding: 0; background: none; cursor: default; }
+a { text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+p, h3 { margin: 0; }
+h3 { font-size: var(--item-heading-size); font-weight: 600; line-height: 1.12; }
+
+/* Stage 2: approved 845 × 1862 reference measured at 1400px wide.
+   Section boundaries: About 800, Why Greek 1320, Courses 2104, Footer 2831.
+   Shared gutters stay aligned at wider viewports; sections remain full-width.
+   Mobile composition is deliberately deferred to Stage 10. */
+header, section, footer {
+  position: relative;
+  padding-inline: max(var(--page-gutter), calc((100vw - var(--composition-width)) / 2 + var(--page-gutter)));
+}
+#hero { min-height: 800px; padding-top: 46px; }
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  margin-left: -18px;
+  font-size: var(--label-size);
+  font-weight: 600;
+  line-height: 1;
+}
+.main-nav a, .main-nav button {
+  display: inline-flex;
+  min-width: 176px;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/assets/Green-Button.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 108% 148%;
+}
+.main-nav :nth-child(2) { min-width: 198px; }
+.main-nav :nth-child(3) { min-width: 194px; }
+
+/* Original heading PNGs contain transparent margins. These dimensions align
+   their visible ink, without cropping or modifying the supplied files. */
+.section-heading { margin: 0; width: max-content; line-height: 0; }
+.section-heading img { display: block; height: auto; }
+#about-heading img { width: 340px; margin-left: -75px; }
+#why-greek-heading img { width: 420px; margin-left: -42px; filter: invert(1); }
+#courses-heading img { width: 365px; margin-left: -83px; }
+
+#about { min-height: 520px; padding-bottom: 100px; }
+.about-copy {
+  display: grid;
+  grid-template-columns: 35.88% 34.25% minmax(0, 1fr);
+  margin-top: 74px;
+}
+.about-copy p:first-child { padding-right: 68px; }
+.about-copy p:nth-child(2) { padding-right: 24px; }
+
+#why-greek {
+  min-height: 784px;
+  padding-top: 40px;
+  padding-bottom: 48px;
+  background: #080808;
+  color: #fff;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-inline: -4px -28px;
+  margin-top: -8px;
+}
+.benefits article {
+  min-height: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.benefits h3 { margin-bottom: 0; letter-spacing: -0.04em; }
+.benefits p { font-size: 1.625rem; line-height: 1.35; }
+.why-greek-copy { margin-top: 40px; }
+.why-greek-copy em { display: block; }
+em { font-style: italic; }
+
+#courses { min-height: 727px; padding-top: 46px; padding-bottom: 20px; }
+.course-list { margin-top: 26px; }
+.course-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 160px;
+  column-gap: 48px;
+  align-items: center;
+  min-height: 172px;
+  padding-inline: 30px 24px;
+}
+.course-row h3 { margin-bottom: 8px; letter-spacing: -0.045em; }
+.course-row p { font-size: var(--support-size); line-height: 1.4; }
+.course-row strong { font-size: var(--price-size); font-weight: 600; line-height: 1.1; text-align: center; }
+.course-row button { min-height: 60px; font-size: var(--label-size); font-weight: 600; background-image: url('/assets/Green-Button.png'); background-repeat: no-repeat; background-position: center; background-size: 108% 148%; }
+.course-row button { cursor: pointer; }
+.course-card + .course-card { border-top: 1px solid rgba(0, 0, 0, 0.14); }
+.course-details { max-width: 500px; margin-left: 30px; padding-bottom: 32px; }
+.course-details p + p { margin-top: 16px; }
+.course-details p { font-size: var(--support-size); line-height: 1.4; }
+.lime-button { display: block; width: 160px; min-height: 60px; font-size: var(--label-size); font-weight: 600; cursor: pointer; background: url('/assets/Green-Button.png') center / 108% 148% no-repeat; }
+.enroll-button { margin-top: 24px; }
+.enrollment-modal { width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 28px; border: 0; color: inherit; background: #fff; font-family: var(--font-body); font-size: 18px; overflow-y: auto; }
+.enrollment-modal::backdrop { background: rgba(0, 0, 0, 0.4); }
+.enrollment-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.enrollment-heading button { font-size: 16px; cursor: pointer; }
+.enrollment-modal form { display: grid; gap: 8px; margin-top: 24px; }
+.enrollment-modal label:not(:first-child) { margin-top: 8px; }
+.enrollment-modal input, .enrollment-modal select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
+.enrollment-modal :is(input, select):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+.enrollment-modal .lime-button { margin-top: 16px; }
+.enrollment-modal .lime-button:disabled { opacity: 0.6; cursor: wait; }
+.level-test-help a { text-decoration: underline; text-underline-offset: 3px; }
+.enrollment-status:not(:empty) { margin-top: 24px; }
+@media (max-width: 700px) {
+  #courses { padding-inline: 24px; }
+  .course-row { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 24px 0; }
+  .course-row button { grid-column: 1 / -1; width: 160px; justify-self: end; }
+  .course-details { margin-left: 0; max-width: 100%; }
+  .enrollment-modal { padding: 24px; }
+}
+
+footer {
+  min-height: 254px;
+  display: flex;
+  align-items: center;
+  background: #080808;
+  color: #fff;
+}
+footer nav { display: flex; gap: 122px; padding-top: 22px; }
+.footer-logo { display: block; width: 300px; height: auto; margin-left: auto; margin-right: -24px; flex-shrink: 0; }
+footer button { font-size: var(--label-size); font-weight: 500; letter-spacing: 0.12em; line-height: 1.5; text-decoration: underline; text-underline-offset: 12px; text-decoration-thickness: 1px; }
+
+/* Preserve the Stage 1 fixed control. Its final geometry is Stage 8. */
+.level-test {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  top: 35%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 20px 12px;
+  border: 0;
+  background: #ccff00;
+  color: #000;
+  border-radius: 0 16px 16px 0;
+  font-size: var(--label-size);
+  font-weight: 600;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Approved artwork, displayed directly. Sprite viewports select one stain
+   from the supplied two-stain PNGs without changing the original files. */
+.decoration { position: absolute; pointer-events: none; user-select: none; }
+.hero-logo { position: absolute; width: 550px; height: auto; left: calc(50% - 252px); top: 151px; }
+.hero-descriptor { position: absolute; width: 460px; height: auto; left: calc(50% - 212px); top: 540px; }
+.hero-flower { width: 366px; left: calc(50% - 700px); top: 156px; }
+.hero-snail { width: 550px; right: calc((100% - 1400px) / 2 - 124px); top: 458px; }
+.spray { background-repeat: no-repeat; }
+.hero-blue, .why-blue { background-image: url('/assets/blue_stains.png'); background-size: 480px 240px; width: 240px; height: 200px; }
+.hero-blue { top: 44px; right: max(38px, calc((100% - 1400px) / 2 + 38px)); }
+.about-pink { width: 180px; height: 156px; top: 0; left: calc(50% + 246px); background-image: url('/assets/mid-pink-stains.png'); background-size: 345px 173px; }
+.why-blue { z-index: 2; right: -95px; bottom: -67px; }
+.courses-peach { width: 218px; top: 46px; left: calc(50% + 14px); transform: rotate(-25deg); }
+.courses-blue { width: 160px; height: 150px; bottom: 0; left: -30px; background-image: url('/assets/blue_stains.png'); background-size: 410px 205px; background-position: right bottom; }
+.main-nav, .section-heading, .about-copy, .benefits, .why-greek-copy, .course-list { position: relative; z-index: 1; }
