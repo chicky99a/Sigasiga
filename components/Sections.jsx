@@ -6,7 +6,6 @@ export function Hero() {
     <nav className="main-nav" aria-label="Main navigation">
       <a href="#about">ABOUT →</a>
       <a href="#courses">COURSES →</a>
-      <button type="button" aria-disabled="true">CULTURE →</button>
       <a href="/enroll">CONTACT US →</a>
     </nav>
     <h1 className="sr-only">Siga Siga — Greek Language & Culture Center</h1>
@@ -57,7 +56,8 @@ export function Footer() {
   return <footer aria-label="Footer">
     <div className="footer-contact">
       <nav aria-label="Social and contact">
-        {['INSTAGRAM', 'FACEBOOK'].map(label => <button type="button" aria-disabled="true" key={label}>{label}</button>)}
+        <button type="button" aria-disabled="true">INSTAGRAM</button>
+        <a href="https://www.facebook.com/sigasigaculture" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="mailto:sigasigacenter@gmail.com">EMAIL</a>
         <a href="https://wa.me/306981279627">WHATSAPP</a>
       </nav>
