@@ -284,7 +284,7 @@ footer nav a { cursor: pointer; }
   .hero-descriptor {
     width: min(88vw, 360px);
     left: 50%;
-    top: 450px;
+    top: 365px;
     transform: translateX(-50%);
   }
   .hero-flower, .hero-snail { display: none; }
@@ -327,15 +327,15 @@ footer nav a { cursor: pointer; }
   #courses-heading img { width: min(310px, 88vw); margin-left: -42px; }
   .course-list { margin-top: 16px; }
   .course-row {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 10px 16px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
     min-height: 0;
     padding: 22px 0;
   }
   .course-row h3 { font-size: 1.35rem; }
   .course-row p { font-size: 1rem; }
-  .course-row strong { align-self: start; font-size: 1.65rem; }
-  .course-row button { grid-column: 1 / -1; width: 150px; min-height: 52px; justify-self: end; font-size: 0.95rem; }
+  .course-row strong { justify-self: start; text-align: left; font-size: 1.65rem; }
+  .course-row button { grid-column: 1; width: 150px; min-height: 52px; justify-self: start; font-size: 0.95rem; }
   .course-details { margin-left: 0; max-width: 100%; padding-bottom: 24px; }
   .course-details p { font-size: 1rem; }
 
@@ -347,7 +347,8 @@ footer nav a { cursor: pointer; }
     padding-block: 32px 36px;
   }
   .footer-contact { flex: 0 1 auto; width: 100%; }
-  footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; }
+  footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; align-items: start; }
+  footer nav :is(a, button) { min-width: 0; overflow-wrap: anywhere; text-align: left; }
   footer nav :is(a, button) { font-size: 0.9rem; text-underline-offset: 6px; }
   .footer-phone { font-size: 1rem; }
   .footer-logo { width: 156px; margin: 0 auto; }
