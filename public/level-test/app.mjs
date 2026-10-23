@@ -19,13 +19,17 @@ function moveSnail(advancing=false){
    image.animate([{transform:'rotate(0deg)'},{transform:'rotate(-2deg)',offset:.55},{transform:'rotate(0deg)'}],{duration:1800,easing:'ease-in-out'});
  }
 }
-let index=0,answers=Array(questions.length).fill(null),screen='question',busy=false;
+let index=0,answers=Array(questions.length).fill(null),screen='welcome',busy=false;
+const welcomeText="After months of working from morning to night, Siga Siga's scientists have created the ultimate test for your Greek level. Take the test and make our snail happy. Haven't started yet? Well, siga siga.";
+let typewriterTimer=null;
 let contact={name:'',email:'',phone:''},submissionId=null,result=null;
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function focusScreen(){document.querySelector('#focus-title')?.focus();window.scrollTo(0,0);}
 function render(focus=true,advancing=false){
+ if(typewriterTimer!==null){clearInterval(typewriterTimer);typewriterTimer=null;}
  moveSnail(advancing);
- if(screen==='contact')renderContact();
+ if(screen==='welcome')renderWelcome();
+ else if(screen==='contact')renderContact();
  else if(screen==='result')renderResult();
  else {
   const q=questions[index];
@@ -37,6 +41,20 @@ function render(focus=true,advancing=false){
   app.querySelector('#finish').onclick=()=>{if(consecutiveSkips<3)return;answers.fill(null,index);screen='contact';submissionId=null;render();};
  }
  if(focus)focusScreen();
+}
+function renderWelcome(){
+ app.innerHTML='<section class="welcome-screen"><p class="eyebrow">GREEK LEVEL TEST</p><h1 id="focus-title" tabindex="-1" class="welcome-text" aria-label="'+escape(welcomeText)+'"><span id="typed-text" aria-hidden="true"></span><span class="typewriter-cursor" aria-hidden="true"></span></h1><button type="button" class="lime wide welcome-start" id="start" hidden>START →</button></section>';
+ const typed=app.querySelector('#typed-text');
+ const start=app.querySelector('#start');
+ start.onclick=()=>{screen='question';render();};
+ const finish=()=>{typed.textContent=welcomeText;start.hidden=false;typewriterTimer=null;};
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return;}
+ let position=0;
+ typewriterTimer=setInterval(()=>{
+  position=Math.min(position+2,welcomeText.length);
+  typed.textContent=welcomeText.slice(0,position);
+  if(position===welcomeText.length){clearInterval(typewriterTimer);finish();}
+ },35);
 }
 function advance(skipping=false){if(screen!=='question'||answers[index]===null||(!skipping&&answers[index]===SKIPPED))return;if(!skipping)consecutiveSkips=0;if(index===questions.length-1){screen='contact';submissionId=null;}else index++;render(true,true);}
 function renderContact(){
@@ -69,7 +87,7 @@ async function submit(e){
 }
 function renderResult(){
  app.innerHTML=`<section class="result-screen"><p class="eyebrow" id="focus-title" tabindex="-1">YOUR GREEK LEVEL</p><h1 class="level">${escape(result.level)}</h1><p class="intro">Your result has been sent to ${escape(contact.email)}.</p><p class="breakdown">${escape(result.breakdown)}</p>${result.inconsistent?'<p class="result-note">Your answers show an uneven pattern across levels. A teacher can help confirm your placement.</p>':''}<div class="controls"><button class="lime wide" id="restart">TAKE IT AGAIN →</button></div></section>`;
- app.querySelector('#restart').onclick=()=>{answers=Array(questions.length).fill(null);consecutiveSkips=0;index=0;screen='question';result=null;submissionId=null;contact={name:'',email:'',phone:''};render();};
+ app.querySelector('#restart').onclick=()=>{answers=Array(questions.length).fill(null);consecutiveSkips=0;index=0;screen='welcome';result=null;submissionId=null;contact={name:'',email:'',phone:''};render();};
 }
 render(false);
 if(document.modelContext?.registerTool){
