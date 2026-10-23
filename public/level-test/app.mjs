@@ -43,7 +43,7 @@ function render(focus=true,advancing=false){
  if(focus)focusScreen();
 }
 function renderWelcome(){
- app.innerHTML='<section class="welcome-screen"><p class="eyebrow">GREEK LEVEL TEST</p><h1 id="focus-title" tabindex="-1" class="welcome-text" aria-label="'+escape(welcomeText)+'"><span id="typed-text" aria-hidden="true"></span><span class="typewriter-cursor" aria-hidden="true"></span></h1><button type="button" class="lime wide welcome-start" id="start" hidden>START →</button></section>';
+ app.innerHTML='<section class="welcome-screen"><h1 id="focus-title" tabindex="-1" class="welcome-text" aria-label="'+escape(welcomeText)+'"><span id="typed-text" aria-hidden="true"></span><span class="typewriter-cursor" aria-hidden="true"></span></h1><button type="button" class="lime wide welcome-start" id="start" hidden>START →</button></section>';
  const typed=app.querySelector('#typed-text');
  const start=app.querySelector('#start');
  start.onclick=()=>{screen='question';render();};
