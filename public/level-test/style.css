@@ -20,3 +20,14 @@
 @media(max-width:700px){.answers{margin-top:32px}.snail-path{--snail-width:68px;width:calc(100% - 40px);height:52px;margin-bottom:28px}.forward-controls{gap:8px}.skip{font-size:14px;padding-inline:4px}.controls:has(.forward-controls){gap:8px}.controls .forward-controls .lime{min-width:128px;padding-inline:14px}.early-finish{margin-top:-26px}}
 @media(max-width:360px){.controls:has(.forward-controls){flex-wrap:wrap}.forward-controls{margin-left:auto}}
 @media(prefers-reduced-motion:reduce){.snail-travel.moving{transition:none}}
+
+/* Typewriter welcome screen before the first question. */
+.welcome-screen{max-width:850px;margin:20px auto 0;text-align:left}
+.welcome-screen .eyebrow{margin-bottom:32px}
+.welcome-text{font-size:clamp(30px,4.2vw,52px);line-height:1.32;min-height:8em;overflow-wrap:break-word}
+.typewriter-cursor{display:inline-block;width:3px;height:.85em;margin-left:3px;background:var(--ink);vertical-align:-.08em;animation:cursor-blink .75s steps(1) infinite}
+@keyframes cursor-blink{50%{opacity:0}}
+.welcome-start{margin-top:36px}
+.welcome-start[hidden]{display:none}
+@media(max-width:700px){.welcome-screen{margin-top:0}.welcome-screen .eyebrow{margin-bottom:24px}.welcome-text{font-size:clamp(26px,7vw,36px);min-height:11em}.welcome-start{margin-top:24px}}
+@media(prefers-reduced-motion:reduce){.typewriter-cursor{animation:none}}
