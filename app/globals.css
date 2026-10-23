@@ -119,6 +119,7 @@ header, section, footer {
 .benefits p { font-size: 1.625rem; line-height: 1.35; }
 .why-greek-copy { margin-top: 40px; }
 .why-greek-copy em { display: block; }
+.why-greek-copy a { text-decoration: underline; text-underline-offset: 4px; }
 em { font-style: italic; }
 
 #courses { min-height: 727px; padding-top: 46px; padding-bottom: 20px; }
@@ -284,7 +285,7 @@ footer nav a { cursor: pointer; }
   .hero-descriptor {
     width: min(88vw, 360px);
     left: 50%;
-    top: 365px;
+    top: 383px;
     transform: translateX(-50%);
   }
   .hero-flower, .hero-snail { display: none; }
