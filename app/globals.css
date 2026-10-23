@@ -154,12 +154,30 @@ em { font-style: italic; }
 .enrollment-modal .lime-button:disabled { opacity: 0.6; cursor: wait; }
 .level-test-help a { text-decoration: underline; text-underline-offset: 3px; }
 .enrollment-status:not(:empty) { margin-top: 24px; }
+.enrollment-page { width: min(760px, calc(100% - 48px)); min-height: 70vh; margin: 0 auto; padding: 72px 0 112px; }
+.enrollment-home { display: inline-block; margin-bottom: 48px; font-size: var(--label-size); font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
+.enrollment-page .eyebrow { margin-bottom: 12px; font-size: var(--label-size); font-weight: 600; letter-spacing: .08em; }
+.enrollment-page h1 { max-width: 720px; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.05; }
+.enrollment-intro { max-width: 640px; margin-top: 22px; }
+.enrollment-form { display: grid; gap: 8px; width: min(640px, 100%); margin-top: 36px; }
+.enrollment-form label:not(:first-child) { margin-top: 8px; }
+.enrollment-form input, .enrollment-form select, .enrollment-form textarea { width: 100%; min-width: 0; min-height: 48px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
+.enrollment-form textarea { resize: vertical; }
+.footer-address { margin-top: 18px; font-style: normal; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+.footer-address a { color: inherit; }
+.enrollment-form :is(input, select, textarea):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+.enrollment-form .lime-button { margin-top: 16px; }
+.enrollment-form .lime-button:disabled { opacity: .6; cursor: wait; }
+.enrollment-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.enrollment-page .enrollment-status { max-width: 640px; font-size: 1.25rem; }
 @media (max-width: 700px) {
   #courses { padding-inline: 24px; }
   .course-row { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 24px 0; }
   .course-row button { grid-column: 1 / -1; width: 160px; justify-self: end; }
   .course-details { margin-left: 0; max-width: 100%; }
   .enrollment-modal { padding: 24px; }
+  .enrollment-page { width: calc(100% - 40px); padding-top: 40px; }
+  .enrollment-home { margin-bottom: 32px; }
 }
 
 footer {
@@ -171,7 +189,22 @@ footer {
 }
 footer nav { display: flex; gap: 122px; padding-top: 22px; }
 .footer-logo { display: block; width: 300px; height: auto; margin-left: auto; margin-right: -24px; flex-shrink: 0; }
-footer button { font-size: var(--label-size); font-weight: 500; letter-spacing: 0.12em; line-height: 1.5; text-decoration: underline; text-underline-offset: 12px; text-decoration-thickness: 1px; }
+footer nav :is(a, button) { font-size: var(--label-size); font-weight: 500; letter-spacing: 0.12em; line-height: 1.5; text-decoration: underline; text-underline-offset: 12px; text-decoration-thickness: 1px; }
+footer nav a { cursor: pointer; }
+.footer-contact { display: flex; flex-direction: column; gap: 14px; }
+.footer-phone { font-size: var(--support-size); text-decoration: underline; text-underline-offset: 5px; }
+
+@media (max-width: 900px) {
+  .main-nav { gap: 8px; flex-wrap: wrap; }
+  .main-nav a, .main-nav button { min-width: clamp(110px, 16vw, 148px); min-height: 54px; }
+  .main-nav :nth-child(2) { min-width: clamp(120px, 18vw, 165px); }
+  .main-nav :nth-child(3) { min-width: clamp(115px, 18vw, 160px); }
+  .main-nav :nth-child(4) { min-width: clamp(128px, 20vw, 180px); }
+  footer { flex-wrap: wrap; gap: 24px; padding-block: 28px; }
+  footer nav { gap: 18px 30px; padding-top: 0; flex-wrap: wrap; }
+  .footer-contact { flex: 1 1 400px; }
+  .footer-logo { width: clamp(140px, 26vw, 220px); margin-right: 0; }
+}
 
 /* Preserve the Stage 1 fixed control. Its final geometry is Stage 8. */
 .level-test {
@@ -206,3 +239,144 @@ footer button { font-size: var(--label-size); font-weight: 500; letter-spacing: 
 .courses-peach { width: 218px; top: 46px; left: calc(50% + 14px); transform: rotate(-25deg); }
 .courses-blue { width: 160px; height: 150px; bottom: 0; left: -30px; background-image: url('/assets/blue_stains.png'); background-size: 410px 205px; background-position: right bottom; }
 .main-nav, .section-heading, .about-copy, .benefits, .why-greek-copy, .course-list { position: relative; z-index: 1; }
+
+/* Phone layout: replace the desktop three-column composition with a readable
+   single-column flow and keep the hero artwork inside the viewport. */
+@media (max-width: 700px) {
+  :root {
+    --page-gutter: 24px;
+    --body-size: 1.125rem;
+    --body-leading: 1.45;
+    --support-size: 1.05rem;
+    --label-size: 0.95rem;
+    --item-heading-size: 1.5rem;
+    --price-size: 1.75rem;
+  }
+
+  header, section, footer { padding-inline: var(--page-gutter); }
+
+  #hero {
+    min-height: 660px;
+    padding-top: 20px;
+    overflow: hidden;
+  }
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 8px;
+    width: min(100%, 360px);
+    margin-left: 0;
+    font-size: 0.875rem;
+  }
+  .main-nav a, .main-nav button,
+  .main-nav :nth-child(2), .main-nav :nth-child(3), .main-nav :nth-child(4) {
+    min-width: 0;
+    width: 100%;
+    min-height: 46px;
+    background-size: 100% 145%;
+  }
+  .hero-logo {
+    width: min(92vw, 390px);
+    left: 50%;
+    top: 160px;
+    transform: translateX(-50%);
+  }
+  .hero-descriptor {
+    width: min(88vw, 360px);
+    left: 50%;
+    top: 450px;
+    transform: translateX(-50%);
+  }
+  .hero-flower, .hero-snail { display: none; }
+  .hero-blue {
+    width: 150px;
+    height: 130px;
+    top: 150px;
+    right: -38px;
+    background-size: 300px 150px;
+  }
+
+  #about { min-height: 0; padding-top: 32px; padding-bottom: 52px; }
+  #about-heading img { width: min(290px, 84vw); margin-left: -34px; }
+  .about-copy {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .about-copy p:first-child, .about-copy p:nth-child(2) { padding-right: 0; }
+
+  #why-greek { min-height: 0; padding-top: 36px; padding-bottom: 56px; }
+  #why-greek-heading img { width: min(360px, 96vw); margin-left: -24px; }
+  .why-blue { display: none; }
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    max-width: 440px;
+    margin: 24px auto 0;
+  }
+  .benefits article {
+    width: 100%;
+    min-height: 116px;
+    aspect-ratio: auto;
+    border-radius: 999px;
+  }
+  .benefits h3 { font-size: 1.5rem; }
+  .why-greek-copy { margin-top: 28px; }
+
+  #courses { min-height: 0; padding-top: 36px; padding-bottom: 44px; }
+  #courses-heading img { width: min(310px, 88vw); margin-left: -42px; }
+  .course-list { margin-top: 16px; }
+  .course-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 16px;
+    min-height: 0;
+    padding: 22px 0;
+  }
+  .course-row h3 { font-size: 1.35rem; }
+  .course-row p { font-size: 1rem; }
+  .course-row strong { align-self: start; font-size: 1.65rem; }
+  .course-row button { grid-column: 1 / -1; width: 150px; min-height: 52px; justify-self: end; font-size: 0.95rem; }
+  .course-details { margin-left: 0; max-width: 100%; padding-bottom: 24px; }
+  .course-details p { font-size: 1rem; }
+
+  footer {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding-block: 32px 36px;
+  }
+  .footer-contact { flex: 0 1 auto; width: 100%; }
+  footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; }
+  footer nav :is(a, button) { font-size: 0.9rem; text-underline-offset: 6px; }
+  .footer-phone { font-size: 1rem; }
+  .footer-logo { width: 156px; margin: 0 auto; }
+
+  .level-test {
+    position: absolute;
+    top: auto;
+    right: 14px;
+    bottom: 14px;
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding: 11px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 14px rgb(0 0 0 / 20%);
+  }
+
+  .enrollment-page { width: calc(100% - 40px); padding-top: 36px; }
+  .enrollment-page h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); }
+  .enrollment-intro { font-size: 1.05rem; }
+  .enrollment-form input, .enrollment-form select, .enrollment-form textarea { font-size: 1rem; }
+}
+
+@media (max-width: 360px) {
+  :root { --page-gutter: 20px; }
+  .main-nav { font-size: 0.8rem; }
+  .main-nav a, .main-nav button,
+  .main-nav :nth-child(2), .main-nav :nth-child(3), .main-nav :nth-child(4) { min-height: 42px; }
+  .course-row { column-gap: 10px; }
+  .course-row h3 { font-size: 1.2rem; }
+  .course-row strong { font-size: 1.45rem; }
+}

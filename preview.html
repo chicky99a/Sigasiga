@@ -1,0 +1,383 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>@font-face {
+  font-family: 'Fredoka';
+  src: url('./public/assets/fonts/Fredoka-VariableFont_wdth-wght.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Fredoka';
+  /* Reserved until the actual handwritten font is supplied. Headings use assets. */
+  --font-handwritten: initial;
+  --composition-width: 1400px;
+  --page-gutter: 84px;
+  --body-size: 1.75rem;
+  --body-leading: 1.38;
+  --support-size: 1.5rem;
+  --label-size: 1.375rem;
+  --item-heading-size: 2.25rem;
+  --price-size: 2.625rem;
+}
+
+* { box-sizing: border-box; }
+/* Clip only at the viewport edge; artwork can still cross section boundaries. */
+html { overflow-x: clip; }
+body {
+  overflow-x: clip;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  font-weight: 300;
+  line-height: var(--body-leading);
+  color: #000;
+  background: #fff;
+}
+button, a { font: inherit; color: inherit; }
+button { border: 0; padding: 0; background: none; cursor: default; }
+a { text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+p, h3 { margin: 0; }
+h3 { font-size: var(--item-heading-size); font-weight: 600; line-height: 1.12; }
+
+/* Stage 2: approved 845 × 1862 reference measured at 1400px wide.
+   Section boundaries: About 800, Why Greek 1320, Courses 2104, Footer 2831.
+   Shared gutters stay aligned at wider viewports; sections remain full-width.
+   Mobile composition is deliberately deferred to Stage 10. */
+header, section, footer {
+  position: relative;
+  padding-inline: max(var(--page-gutter), calc((100vw - var(--composition-width)) / 2 + var(--page-gutter)));
+}
+#hero { min-height: 800px; padding-top: 46px; }
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  margin-left: -18px;
+  font-size: var(--label-size);
+  font-weight: 600;
+  line-height: 1;
+}
+.main-nav a, .main-nav button {
+  display: inline-flex;
+  min-width: 176px;
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  background-image: url('./public/assets/Green-Button.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 108% 148%;
+}
+.main-nav :nth-child(2) { min-width: 198px; }
+.main-nav :nth-child(3) { min-width: 194px; }
+
+/* Original heading PNGs contain transparent margins. These dimensions align
+   their visible ink, without cropping or modifying the supplied files. */
+.section-heading { margin: 0; width: max-content; line-height: 0; }
+.section-heading img { display: block; height: auto; }
+#about-heading img { width: 340px; margin-left: -75px; }
+#why-greek-heading img { width: 420px; margin-left: -42px; filter: invert(1); }
+#courses-heading img { width: 365px; margin-left: -83px; }
+
+#about { min-height: 520px; padding-bottom: 100px; }
+.about-copy {
+  display: grid;
+  grid-template-columns: 35.88% 34.25% minmax(0, 1fr);
+  margin-top: 74px;
+}
+.about-copy p:first-child { padding-right: 68px; }
+.about-copy p:nth-child(2) { padding-right: 24px; }
+
+#why-greek {
+  min-height: 784px;
+  padding-top: 40px;
+  padding-bottom: 48px;
+  background: #080808;
+  color: #fff;
+}
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin-inline: -4px -28px;
+  margin-top: -8px;
+}
+.benefits article {
+  min-height: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.benefits h3 { margin-bottom: 0; letter-spacing: -0.04em; }
+.benefits p { font-size: 1.625rem; line-height: 1.35; }
+.why-greek-copy { margin-top: 40px; }
+.why-greek-copy em { display: block; }
+em { font-style: italic; }
+
+#courses { min-height: 727px; padding-top: 46px; padding-bottom: 20px; }
+.course-list { margin-top: 26px; }
+.course-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 160px;
+  column-gap: 48px;
+  align-items: center;
+  min-height: 172px;
+  padding-inline: 30px 24px;
+}
+.course-row h3 { margin-bottom: 8px; letter-spacing: -0.045em; }
+.course-row p { font-size: var(--support-size); line-height: 1.4; }
+.course-row strong { font-size: var(--price-size); font-weight: 600; line-height: 1.1; text-align: center; }
+.course-row button { min-height: 60px; font-size: var(--label-size); font-weight: 600; background-image: url('./public/assets/Green-Button.png'); background-repeat: no-repeat; background-position: center; background-size: 108% 148%; }
+.course-row button { cursor: pointer; }
+.course-card + .course-card { border-top: 1px solid rgba(0, 0, 0, 0.14); }
+.course-details { max-width: 500px; margin-left: 30px; padding-bottom: 32px; }
+.course-details p + p { margin-top: 16px; }
+.course-details p { font-size: var(--support-size); line-height: 1.4; }
+.lime-button { display: block; width: 160px; min-height: 60px; font-size: var(--label-size); font-weight: 600; cursor: pointer; background: url('./public/assets/Green-Button.png') center / 108% 148% no-repeat; }
+.enroll-button { margin-top: 24px; }
+.enrollment-modal { width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 28px; border: 0; color: inherit; background: #fff; font-family: var(--font-body); font-size: 18px; overflow-y: auto; }
+.enrollment-modal::backdrop { background: rgba(0, 0, 0, 0.4); }
+.enrollment-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.enrollment-heading button { font-size: 16px; cursor: pointer; }
+.enrollment-modal form { display: grid; gap: 8px; margin-top: 24px; }
+.enrollment-modal label:not(:first-child) { margin-top: 8px; }
+.enrollment-modal input, .enrollment-modal select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
+.enrollment-modal :is(input, select):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+.enrollment-modal .lime-button { margin-top: 16px; }
+.enrollment-modal .lime-button:disabled { opacity: 0.6; cursor: wait; }
+.level-test-help a { text-decoration: underline; text-underline-offset: 3px; }
+.enrollment-status:not(:empty) { margin-top: 24px; }
+.enrollment-page { width: min(760px, calc(100% - 48px)); min-height: 70vh; margin: 0 auto; padding: 72px 0 112px; }
+.enrollment-home { display: inline-block; margin-bottom: 48px; font-size: var(--label-size); font-weight: 600; text-decoration: underline; text-underline-offset: 5px; }
+.enrollment-page .eyebrow { margin-bottom: 12px; font-size: var(--label-size); font-weight: 600; letter-spacing: .08em; }
+.enrollment-page h1 { max-width: 720px; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 600; line-height: 1.05; }
+.enrollment-intro { max-width: 640px; margin-top: 22px; }
+.enrollment-form { display: grid; gap: 8px; width: min(640px, 100%); margin-top: 36px; }
+.enrollment-form label:not(:first-child) { margin-top: 8px; }
+.enrollment-form input, .enrollment-form select, .enrollment-form textarea { width: 100%; min-width: 0; min-height: 48px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
+.enrollment-form textarea { resize: vertical; }
+.footer-address { margin-top: 18px; font-style: normal; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+.footer-address a { color: inherit; }
+.enrollment-form :is(input, select, textarea):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+.enrollment-form .lime-button { margin-top: 16px; }
+.enrollment-form .lime-button:disabled { opacity: .6; cursor: wait; }
+.enrollment-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.enrollment-page .enrollment-status { max-width: 640px; font-size: 1.25rem; }
+@media (max-width: 700px) {
+  #courses { padding-inline: 24px; }
+  .course-row { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 24px 0; }
+  .course-row button { grid-column: 1 / -1; width: 160px; justify-self: end; }
+  .course-details { margin-left: 0; max-width: 100%; }
+  .enrollment-modal { padding: 24px; }
+  .enrollment-page { width: calc(100% - 40px); padding-top: 40px; }
+  .enrollment-home { margin-bottom: 32px; }
+}
+
+footer {
+  min-height: 254px;
+  display: flex;
+  align-items: center;
+  background: #080808;
+  color: #fff;
+}
+footer nav { display: flex; gap: 122px; padding-top: 22px; }
+.footer-logo { display: block; width: 300px; height: auto; margin-left: auto; margin-right: -24px; flex-shrink: 0; }
+footer nav :is(a, button) { font-size: var(--label-size); font-weight: 500; letter-spacing: 0.12em; line-height: 1.5; text-decoration: underline; text-underline-offset: 12px; text-decoration-thickness: 1px; }
+footer nav a { cursor: pointer; }
+.footer-contact { display: flex; flex-direction: column; gap: 14px; }
+.footer-phone { font-size: var(--support-size); text-decoration: underline; text-underline-offset: 5px; }
+
+@media (max-width: 900px) {
+  .main-nav { gap: 8px; flex-wrap: wrap; }
+  .main-nav a, .main-nav button { min-width: clamp(110px, 16vw, 148px); min-height: 54px; }
+  .main-nav :nth-child(2) { min-width: clamp(120px, 18vw, 165px); }
+  .main-nav :nth-child(3) { min-width: clamp(115px, 18vw, 160px); }
+  .main-nav :nth-child(4) { min-width: clamp(128px, 20vw, 180px); }
+  footer { flex-wrap: wrap; gap: 24px; padding-block: 28px; }
+  footer nav { gap: 18px 30px; padding-top: 0; flex-wrap: wrap; }
+  .footer-contact { flex: 1 1 400px; }
+  .footer-logo { width: clamp(140px, 26vw, 220px); margin-right: 0; }
+}
+
+/* Preserve the Stage 1 fixed control. Its final geometry is Stage 8. */
+.level-test {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  top: 35%;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 20px 12px;
+  border: 0;
+  background: #ccff00;
+  color: #000;
+  border-radius: 0 16px 16px 0;
+  font-size: var(--label-size);
+  font-weight: 600;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Approved artwork, displayed directly. Sprite viewports select one stain
+   from the supplied two-stain PNGs without changing the original files. */
+.decoration { position: absolute; pointer-events: none; user-select: none; }
+.hero-logo { position: absolute; width: 550px; height: auto; left: calc(50% - 252px); top: 151px; }
+.hero-descriptor { position: absolute; width: 460px; height: auto; left: calc(50% - 212px); top: 540px; }
+.hero-flower { width: 366px; left: calc(50% - 700px); top: 156px; }
+.hero-snail { width: 550px; right: calc((100% - 1400px) / 2 - 124px); top: 458px; }
+.spray { background-repeat: no-repeat; }
+.hero-blue, .why-blue { background-image: url('./public/assets/blue_stains.png'); background-size: 480px 240px; width: 240px; height: 200px; }
+.hero-blue { top: 44px; right: max(38px, calc((100% - 1400px) / 2 + 38px)); }
+.about-pink { width: 180px; height: 156px; top: 0; left: calc(50% + 246px); background-image: url('./public/assets/mid-pink-stains.png'); background-size: 345px 173px; }
+.why-blue { z-index: 2; right: -95px; bottom: -67px; }
+.courses-peach { width: 218px; top: 46px; left: calc(50% + 14px); transform: rotate(-25deg); }
+.courses-blue { width: 160px; height: 150px; bottom: 0; left: -30px; background-image: url('./public/assets/blue_stains.png'); background-size: 410px 205px; background-position: right bottom; }
+.main-nav, .section-heading, .about-copy, .benefits, .why-greek-copy, .course-list { position: relative; z-index: 1; }
+
+/* Phone layout: replace the desktop three-column composition with a readable
+   single-column flow and keep the hero artwork inside the viewport. */
+@media (max-width: 700px) {
+  :root {
+    --page-gutter: 24px;
+    --body-size: 1.125rem;
+    --body-leading: 1.45;
+    --support-size: 1.05rem;
+    --label-size: 0.95rem;
+    --item-heading-size: 1.5rem;
+    --price-size: 1.75rem;
+  }
+
+  header, section, footer { padding-inline: var(--page-gutter); }
+
+  #hero {
+    min-height: 660px;
+    padding-top: 20px;
+    overflow: hidden;
+  }
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 8px;
+    width: min(100%, 360px);
+    margin-left: 0;
+    font-size: 0.875rem;
+  }
+  .main-nav a, .main-nav button,
+  .main-nav :nth-child(2), .main-nav :nth-child(3), .main-nav :nth-child(4) {
+    min-width: 0;
+    width: 100%;
+    min-height: 46px;
+    background-size: 100% 145%;
+  }
+  .hero-logo {
+    width: min(92vw, 390px);
+    left: 50%;
+    top: 160px;
+    transform: translateX(-50%);
+  }
+  .hero-descriptor {
+    width: min(88vw, 360px);
+    left: 50%;
+    top: 450px;
+    transform: translateX(-50%);
+  }
+  .hero-flower, .hero-snail { display: none; }
+  .hero-blue {
+    width: 150px;
+    height: 130px;
+    top: 150px;
+    right: -38px;
+    background-size: 300px 150px;
+  }
+
+  #about { min-height: 0; padding-top: 32px; padding-bottom: 52px; }
+  #about-heading img { width: min(290px, 84vw); margin-left: -34px; }
+  .about-copy {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .about-copy p:first-child, .about-copy p:nth-child(2) { padding-right: 0; }
+
+  #why-greek { min-height: 0; padding-top: 36px; padding-bottom: 56px; }
+  #why-greek-heading img { width: min(360px, 96vw); margin-left: -24px; }
+  .why-blue { display: none; }
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    max-width: 440px;
+    margin: 24px auto 0;
+  }
+  .benefits article {
+    width: 100%;
+    min-height: 116px;
+    aspect-ratio: auto;
+    border-radius: 999px;
+  }
+  .benefits h3 { font-size: 1.5rem; }
+  .why-greek-copy { margin-top: 28px; }
+
+  #courses { min-height: 0; padding-top: 36px; padding-bottom: 44px; }
+  #courses-heading img { width: min(310px, 88vw); margin-left: -42px; }
+  .course-list { margin-top: 16px; }
+  .course-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 16px;
+    min-height: 0;
+    padding: 22px 0;
+  }
+  .course-row h3 { font-size: 1.35rem; }
+  .course-row p { font-size: 1rem; }
+  .course-row strong { align-self: start; font-size: 1.65rem; }
+  .course-row button { grid-column: 1 / -1; width: 150px; min-height: 52px; justify-self: end; font-size: 0.95rem; }
+  .course-details { margin-left: 0; max-width: 100%; padding-bottom: 24px; }
+  .course-details p { font-size: 1rem; }
+
+  footer {
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding-block: 32px 36px;
+  }
+  .footer-contact { flex: 0 1 auto; width: 100%; }
+  footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; }
+  footer nav :is(a, button) { font-size: 0.9rem; text-underline-offset: 6px; }
+  .footer-phone { font-size: 1rem; }
+  .footer-logo { width: 156px; margin: 0 auto; }
+
+  .level-test {
+    position: absolute;
+    top: auto;
+    right: 14px;
+    bottom: 14px;
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding: 11px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    box-shadow: 0 3px 14px rgb(0 0 0 / 20%);
+  }
+
+  .enrollment-page { width: calc(100% - 40px); padding-top: 36px; }
+  .enrollment-page h1 { font-size: clamp(2.25rem, 11vw, 3.5rem); }
+  .enrollment-intro { font-size: 1.05rem; }
+  .enrollment-form input, .enrollment-form select, .enrollment-form textarea { font-size: 1rem; }
+}
+
+@media (max-width: 360px) {
+  :root { --page-gutter: 20px; }
+  .main-nav { font-size: 0.8rem; }
+  .main-nav a, .main-nav button,
+  .main-nav :nth-child(2), .main-nav :nth-child(3), .main-nav :nth-child(4) { min-height: 42px; }
+  .course-row { column-gap: 10px; }
+  .course-row h3 { font-size: 1.2rem; }
+  .course-row strong { font-size: 1.45rem; }
+}
+</style></head><body><header id="hero"><nav class="main-nav"><a>ABOUT →</a><a>COURSES →</a><button>CULTURE →</button><a>CONTACT US →</a></nav><img class="hero-logo" src="./public/assets/ChatGPT Image Sep 7, 2026, 05_59_42 PM.png"><img class="hero-descriptor" src="./public/assets/ChatGPT Image Sep 7, 2026, 06_12_33 PM.png"><img class="decoration hero-flower" src="./public/assets/red-flower.png"><span class="decoration spray hero-blue"></span><img class="decoration hero-snail" src="./public/assets/snail_tran.png"><a class="level-test">TAKE A LEVEL TEST →</a></header><section id="about"><h2 class="section-heading" id="about-heading"><img src="./public/assets/about.png"></h2><span class="decoration spray about-pink"></span><div class="about-copy"><p>Siga Siga is a Greek language school and cultural centre that began in our living room. We were two expats who moved to Athens and fell in love with the city.</p><p>When we started learning Greek, we rediscovered the place we live in and the famous Greek philoxenia. We started getting the jokes, chatting with the vendors at the laiki,</p><p>or finally making sense of the building group chat. We really wanted to share that experience with others and that’s how Siga Siga was born.</p></div></section><section id="why-greek"><span class="decoration spray why-blue"></span><h2 class="section-heading" id="why-greek-heading"><img src="./public/assets/why-greek.png"></h2><div class="benefits"><article><h3>GET<br>THE JOKES</h3></article><article><h3>TALK<br>TO PEOPLE</h3></article><article><h3>FEEL<br>AT HOME</h3></article></div><p class="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in central Athens or online from anywhere in the cosmos <em>(and kosmos is Greek word).</em> We currently have seven Greek language classes running year-round, ranging from complete beginner (A0) to advanced (B1). You are welcome to take our placement test and join us.</p></section><section id="courses"><img class="decoration courses-peach" src="./public/assets/ChatGPT Image Sep 8, 2026, 06_31_35 PM.png"><span class="decoration spray courses-blue"></span><h2 class="section-heading" id="courses-heading"><img src="./public/assets/courses.png"></h2><div class="course-list"><div class="course-card"><div class="course-row"><div><h3>LEARN GREEK</h3><p>16 hours per month</p></div><strong>€160</strong><button>MORE →</button></div></div><div class="course-card"><div class="course-row"><div><h3>SPEAK FREELY</h3><p>8 hours per month</p></div><strong>€85</strong><button>MORE →</button></div></div><div class="course-card"><div class="course-row"><div><h3>DROP-IN</h3><p>One Greek session</p></div><strong>€25</strong><button>MORE →</button></div></div></div></section><footer><div class="footer-contact"><nav><a>INSTAGRAM</a><a>FACEBOOK</a><a>EMAIL</a><a>WHATSAPP</a></nav><a class="footer-phone">Phone us +306981279627</a><address class="footer-address">Odissea Androutsou 36, Koukaki, Athens 11741 ↗</address></div><img class="footer-logo" src="./public/assets/Logo white.png"></footer></body></html>

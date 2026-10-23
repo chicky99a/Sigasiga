@@ -7,6 +7,7 @@ export function Hero() {
       <a href="#about">ABOUT →</a>
       <a href="#courses">COURSES →</a>
       <button type="button" aria-disabled="true">CULTURE →</button>
+      <a href="/enroll">CONTACT US →</a>
     </nav>
     <h1 className="sr-only">Siga Siga — Greek Language & Culture Center</h1>
     <img className="hero-logo" src="/assets/ChatGPT Image Sep 7, 2026, 05_59_42 PM.png" alt="" />
@@ -14,6 +15,7 @@ export function Hero() {
     <img className="decoration hero-flower" src="/assets/red-flower.png" alt="" />
     <span className="decoration spray hero-blue" aria-hidden="true" />
     <img className="decoration hero-snail" src="/assets/snail_tran.png" alt="" />
+    <a className="level-test" href="/level-test/index.html">TAKE A LEVEL TEST →</a>
   </header>;
 }
 
@@ -38,7 +40,7 @@ export function WhyGreek() {
       <article><h3>TALK<br />TO PEOPLE</h3></article>
       <article><h3>FEEL<br />AT HOME</h3></article>
     </div>
-    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in central Athens or online from anywhere in the cosmos <em>(and kosmos is Greek word).</em></p>
+    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in central Athens or online from anywhere in the cosmos <em>(and kosmos is Greek word).</em> We currently have seven Greek language classes running year-round, ranging from complete beginner (A0) to advanced (B1). You are welcome to take our placement test and join us.</p>
   </section>;
 }
 
@@ -53,9 +55,15 @@ export function Courses() {
 
 export function Footer() {
   return <footer aria-label="Footer">
-    <nav aria-label="Social and contact">
-      {['INSTAGRAM', 'FACEBOOK', 'CONTACT'].map(label => <button type="button" aria-disabled="true" key={label}>{label}</button>)}
-    </nav>
+    <div className="footer-contact">
+      <nav aria-label="Social and contact">
+        {['INSTAGRAM', 'FACEBOOK'].map(label => <button type="button" aria-disabled="true" key={label}>{label}</button>)}
+        <a href="mailto:sigasigacenter@gmail.com">EMAIL</a>
+        <a href="https://wa.me/306981279627">WHATSAPP</a>
+      </nav>
+      <a className="footer-phone" href="tel:+306981279627">Phone us +306981279627</a>
+      <address className="footer-address">Siga Siga address is <a href="https://www.google.com/maps/search/?api=1&query=Odissea%20Androutsou%2036%2C%20Koukaki%2C%20Athens%2011741" target="_blank" rel="noopener noreferrer">Odissea Androutsou 36, Koukaki, Athens 11741 ↗</a></address>
+    </div>
     <img className="footer-logo" src="/assets/Logo white.png" alt="Siga Siga" width="1536" height="1024" />
   </footer>;
 }

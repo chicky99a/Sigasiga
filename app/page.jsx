@@ -1,5 +1,4 @@
 import { Hero, About, WhyGreek, Courses, Footer } from '../components/Sections';
-import LevelTestCTA from '../components/LevelTestCTA';
 
 export default function Home() {
   return <>
@@ -10,6 +9,5 @@ export default function Home() {
       <Courses />
     </main>
     <Footer />
-    <LevelTestCTA />
   </>;
 }
