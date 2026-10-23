@@ -1,11 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { courses } from '../data/courses';
 import { greekLevels } from '../data/enrollment';
 
 export default function EnrollmentForm({ initialCourseId = '', levelTestUrl = '/level-test/index.html', contact = false }) {
-  const [courseId, setCourseId] = useState(initialCourseId);
   const [level, setLevel] = useState('Complete beginner');
   const [busy, setBusy] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -44,13 +42,7 @@ export default function EnrollmentForm({ initialCourseId = '', levelTestUrl = '/
 
   return <>
     {!submitted && <form className="enrollment-form" onSubmit={submit} onInput={resetId}>
-      {contact ? <input type="hidden" name="formType" value="contact" /> : <>
-      <label htmlFor="enrollment-course">Course</label>
-      <select id="enrollment-course" name="courseId" value={courseId} onChange={event => { setCourseId(event.target.value); resetId(); }} required>
-        <option value="" disabled>Select a course</option>
-        {courses.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}
-      </select>
-      </>}
+      {contact ? <input type="hidden" name="formType" value="contact" /> : <input type="hidden" name="courseId" value={initialCourseId} />}
       <label htmlFor="enrollment-name">Full name</label>
       <input id="enrollment-name" name="fullName" autoComplete="name" required maxLength={120} />
       <label htmlFor="enrollment-email">Email{contact ? ' (optional)' : ''}</label>
