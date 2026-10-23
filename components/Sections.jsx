@@ -19,9 +19,8 @@ export function Hero() {
 }
 
 export function About() {
-  return <section id="about" aria-labelledby="about-heading">
+  return <section id="about" aria-label="About Siga Siga">
     <span className="decoration spray about-pink" aria-hidden="true" />
-    <SectionHeading id="about-heading" asset="about.png">ABOUT</SectionHeading>
     <div className="about-copy">
       <p>Siga Siga is a Greek language school and cultural centre that began in our living room. We were two expats who moved to Athens and fell in love with the city.</p>
       <p>When we started learning Greek, we rediscovered the place we live in and the famous Greek philoxenia. We started getting the jokes, chatting with the vendors at the laiki,</p>
@@ -39,7 +38,7 @@ export function WhyGreek() {
       <article><h3>TALK<br />TO PEOPLE</h3></article>
       <article><h3>FEEL<br />AT HOME</h3></article>
     </div>
-    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in Koukaki neighbourhood, central Athens, or online from anywhere in the cosmos <em>(and kosmos is Greek word).</em> We currently have seven Greek language classes running year-round, ranging from complete beginner (A0) to advanced (B1). You are welcome to take our <a href="/level-test/index.html">placement test</a> and join us.</p>
+    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in Koukaki neighbourhood, central Athens, or online from anywhere in the cosmos <em>(and kosmos is a Greek word).</em> We have several Greek language classes running year-round, at all levels. You are welcome to take our <a href="/level-test/index.html">placement test</a> and join us.</p>
   </section>;
 }
 
