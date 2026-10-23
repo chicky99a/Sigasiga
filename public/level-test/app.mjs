@@ -48,13 +48,12 @@ function renderWelcome(){
  const start=app.querySelector('#start');
  start.onclick=()=>{screen='question';render();};
  const finish=()=>{typed.textContent=welcomeText;start.hidden=false;typewriterTimer=null;};
- if(matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return;}
  let position=0;
  typewriterTimer=setInterval(()=>{
-  position=Math.min(position+2,welcomeText.length);
+  position=Math.min(position+1,welcomeText.length);
   typed.textContent=welcomeText.slice(0,position);
   if(position===welcomeText.length){clearInterval(typewriterTimer);finish();}
- },35);
+ },45);
 }
 function advance(skipping=false){if(screen!=='question'||answers[index]===null||(!skipping&&answers[index]===SKIPPED))return;if(!skipping)consecutiveSkips=0;if(index===questions.length-1){screen='contact';submissionId=null;}else index++;render(true,true);}
 function renderContact(){
