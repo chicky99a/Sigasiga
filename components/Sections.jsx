@@ -56,7 +56,7 @@ export function Footer() {
   return <footer aria-label="Footer">
     <div className="footer-contact">
       <nav aria-label="Social and contact">
-        <button type="button" aria-disabled="true">INSTAGRAM</button>
+        <a href="https://www.instagram.com/siga__siga_language_center/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href="https://www.facebook.com/sigasigaculture" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
         <a href="mailto:sigasigacenter@gmail.com">EMAIL</a>
         <a href="https://wa.me/306981279627">WHATSAPP</a>
