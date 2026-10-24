@@ -164,7 +164,7 @@ em { font-style: italic; }
 .enrollment-form label:not(:first-child) { margin-top: 8px; }
 .enrollment-form input, .enrollment-form select, .enrollment-form textarea { width: 100%; min-width: 0; min-height: 48px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
 .enrollment-form textarea { resize: vertical; }
-.footer-address { margin-top: 18px; font-style: normal; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+.footer-address { margin-top: 18px; font-style: normal; font-size: 0.9rem; line-height: 1.5; overflow-wrap: anywhere; }
 .footer-address a { color: inherit; }
 .enrollment-form :is(input, select, textarea):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
 .enrollment-form .lime-button { margin-top: 16px; }
@@ -193,7 +193,7 @@ footer nav { display: flex; gap: 122px; padding-top: 22px; }
 footer nav :is(a, button) { font-size: var(--label-size); font-weight: 500; letter-spacing: 0.12em; line-height: 1.5; text-decoration: underline; text-underline-offset: 12px; text-decoration-thickness: 1px; }
 footer nav a { cursor: pointer; }
 .footer-contact { display: flex; flex-direction: column; gap: 14px; }
-.footer-phone { font-size: var(--support-size); text-decoration: underline; text-underline-offset: 5px; }
+.footer-phone { font-size: 0.9rem; text-decoration: underline; text-underline-offset: 5px; }
 
 @media (max-width: 900px) {
   .main-nav { gap: 8px; flex-wrap: wrap; }
@@ -351,7 +351,7 @@ footer nav a { cursor: pointer; }
   footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; align-items: start; }
   footer nav :is(a, button) { min-width: 0; overflow-wrap: anywhere; text-align: left; }
   footer nav :is(a, button) { font-size: 0.9rem; text-underline-offset: 6px; }
-  .footer-phone { font-size: 1rem; }
+  .footer-phone, .footer-address { font-size: 0.9rem; }
   .footer-logo { width: 156px; margin: 0 auto; }
 
   .level-test {

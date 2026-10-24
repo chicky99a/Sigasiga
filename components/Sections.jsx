@@ -32,13 +32,13 @@ export function About() {
 export function WhyGreek() {
   return <section id="why-greek" aria-labelledby="why-greek-heading">
     <span className="decoration spray why-blue" aria-hidden="true" />
-    <SectionHeading id="why-greek-heading" asset="why-greek.png">WHY GREEK?</SectionHeading>
+    <SectionHeading id="why-greek-heading" asset="why-greek.png">GREEK COULD BE FUN</SectionHeading>
     <div className="benefits">
       <article><h3>GET<br />THE JOKES</h3></article>
       <article><h3>TALK<br />TO PEOPLE</h3></article>
       <article><h3>FEEL<br />AT HOME</h3></article>
     </div>
-    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in Koukaki neighbourhood, central Athens, or online from anywhere in the cosmos <em>(and kosmos is a Greek word).</em> We have several Greek language classes running year-round, at all levels. You are welcome to take our <a href="/level-test/index.html">placement test</a> and join us.</p>
+    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in Koukaki neighbourhood, central Athens, or online from anywhere in the <span style={{ whiteSpace: "nowrap" }}>cosmos <em>(and kosmos is a Greek word).</em></span> We have several Greek language classes running year-round, at all levels. You are welcome to take our <a href="/level-test/index.html">placement test</a> and join us.</p>
   </section>;
 }
 
