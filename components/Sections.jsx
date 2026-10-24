@@ -32,7 +32,7 @@ export function About() {
 export function WhyGreek() {
   return <section id="why-greek" aria-labelledby="why-greek-heading">
     <span className="decoration spray why-blue" aria-hidden="true" />
-    <h2 id="why-greek-heading" className="section-heading why-greek-text-heading">GREEK COULD BE FUN</h2>
+    <h2 id="why-greek-heading" className="section-heading why-greek-text-heading">GREEK CAN BE FUN</h2>
     <div className="benefits">
       <article><h3>GET<br />THE JOKES</h3></article>
       <article><h3>TALK<br />TO PEOPLE</h3></article>
