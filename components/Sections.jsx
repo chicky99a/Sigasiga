@@ -60,8 +60,8 @@ export function Footer() {
         <a href="mailto:sigasigacenter@gmail.com">EMAIL</a>
         <a href="https://wa.me/306981279627">WHATSAPP</a>
       </nav>
-      <a className="footer-phone" href="tel:+306981279627">Phone us +306981279627</a>
-      <address className="footer-address">Siga Siga address is <a href="https://www.google.com/maps/search/?api=1&query=Odissea%20Androutsou%2036%2C%20Koukaki%2C%20Athens%2011741" target="_blank" rel="noopener noreferrer">Odissea Androutsou 36, Koukaki, Athens 11741 ↗</a></address>
+      <a className="footer-phone" href="tel:+306981279627">Phone/Whatsapp +306981279627</a>
+      <address className="footer-address"><a href="https://www.google.com/maps/search/?api=1&query=Odissea%20Androutsou%2036%2C%20Koukaki%2C%20Athens%2011741" target="_blank" rel="noopener noreferrer">Odissea Androutsou 36, Koukaki, Athens 11741 ↗</a></address>
     </div>
     <img className="footer-logo" src="/assets/Logo white.png" alt="Siga Siga" width="1536" height="1024" />
   </footer>;
