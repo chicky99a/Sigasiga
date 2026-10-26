@@ -6,7 +6,7 @@ export function Hero() {
     <nav className="main-nav" aria-label="Main navigation">
       <a href="#about">ABOUT →</a>
       <a href="#courses">COURSES →</a>
-      <a href="/enroll">CONTACT US →</a>
+      <a href="/enroll">CONTACT →</a>
     </nav>
     <h1 className="sr-only">Siga Siga — Greek Language & Culture Center</h1>
     <img className="hero-logo" src="/assets/ChatGPT Image Sep 7, 2026, 05_59_42 PM.png" alt="" />
@@ -31,22 +31,25 @@ export function About() {
 
 export function WhyGreek() {
   return <section id="why-greek" aria-labelledby="why-greek-heading">
-    <span className="decoration spray why-blue" aria-hidden="true" />
-    <h2 id="why-greek-heading" className="section-heading why-greek-text-heading">GREEK CAN BE FUN</h2>
+    <SectionHeading id="why-greek-heading" asset="why-greek.png">Why Greek?</SectionHeading>
     <div className="benefits">
       <article><h3>GET<br />THE JOKES</h3></article>
       <article><h3>TALK<br />TO PEOPLE</h3></article>
       <article><h3>FEEL<br />AT HOME</h3></article>
     </div>
-    <p className="why-greek-copy">Learning Greek takes place in small groups, with experienced teachers and good company, in person in Koukaki neighbourhood, central Athens, or online from anywhere in the <span style={{ whiteSpace: "nowrap" }}>cosmos <em>(and kosmos is a Greek word).</em></span><br />We have several Greek language classes running year-round, at all levels. You are welcome to take our <a href="/level-test/index.html">placement test</a> and join us.</p>
   </section>;
 }
 
 export function Courses() {
   return <section id="courses" aria-labelledby="courses-heading">
-    <img className="decoration courses-peach" src="/assets/ChatGPT Image Sep 8, 2026, 06_31_35 PM.png" alt="" />
+    <span className="decoration spray courses-pink" aria-hidden="true" />
     <span className="decoration spray courses-blue" aria-hidden="true" />
     <SectionHeading id="courses-heading" asset="courses.png">COURSES</SectionHeading>
+    <div className="courses-intro">
+      <p>Learning Greek takes place in small groups, with experienced teachers and good company — in person in Koukaki, a neighborhood in central Athens, or online from anywhere in the cosmos (and <em>kosmos</em> is a Greek word!).</p>
+      <p>We have Greek language classes running year-round, at all levels. We also offer the opportunity to drop in whenever you feel like it and join our weekly speaking class.</p>
+      <p>Take our <a href="https://sigasiga.vercel.app/level-test/index.html">placement test</a> or <a href="/enroll#contact">contact us</a> to find out which option is best for you and start speaking Greek.</p>
+    </div>
     <CourseList levelTestUrl={'/level-test/index.html'} />
   </section>;
 }
@@ -57,11 +60,9 @@ export function Footer() {
       <nav aria-label="Social and contact">
         <a href="https://www.instagram.com/siga__siga_language_center/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href="https://www.facebook.com/sigasigaculture" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
-        <a href="mailto:sigasigacenter@gmail.com">EMAIL</a>
-        <a href="https://wa.me/306981279627">WHATSAPP</a>
+        <a href="/enroll">CONTACT →</a>
       </nav>
-      <a className="footer-phone" href="tel:+306981279627">Phone/Whatsapp +306981279627</a>
-      <address className="footer-address"><a href="https://www.google.com/maps/search/?api=1&query=Odissea%20Androutsou%2036%2C%20Koukaki%2C%20Athens%2011741" target="_blank" rel="noopener noreferrer">Odissea Androutsou 36, Koukaki, Athens 11741 ↗</a></address>
+      <div className="footer-address" aria-hidden="true">&nbsp;</div>
     </div>
     <img className="footer-logo" src="/assets/Logo white.png" alt="Siga Siga" width="1536" height="1024" />
   </footer>;

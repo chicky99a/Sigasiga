@@ -58,12 +58,12 @@ export default function EnrollmentForm({ initialCourseId = '', levelTestUrl = '/
         <label htmlFor="enrollment-message">Message (optional)</label>
         <textarea id="enrollment-message" name="message" rows={5} maxLength={2000} />
       </>}
-      {contact && <p className="enrollment-contact-alternative">Too lazy to fill out the form? Give us a <a href="tel:+306981279627">call</a>, send us a <a href="https://wa.me/306981279627" target="_blank" rel="noopener noreferrer">WhatsApp</a> at <a href="tel:+306981279627">+306981279627</a>, or drop us an <a href="mailto:sigasigacenter@gmail.com">email</a> at <a href="mailto:sigasigacenter@gmail.com">sigasigacenter@gmail.com</a>.</p>}
       <div className="enrollment-honeypot" aria-hidden="true">
         <label htmlFor="enrollment-website">Leave this field empty</label>
         <input id="enrollment-website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
       <button className="lime-button" type="submit" disabled={busy}>{busy ? 'SENDING…' : 'SUBMIT →'}</button>
+      {contact && <p className="enrollment-contact-alternative"><strong>Too lazy to fill out the form?</strong> Give us a call, send us a <a href="https://wa.me/306981279627" target="_blank" rel="noopener noreferrer">WhatsApp</a> / Viber at <a href="tel:+306981279627">+30 698 127 9627</a>, or drop us an <a href="mailto:sigasigacenter@gmail.com">email</a> at <a href="mailto:sigasigacenter@gmail.com">sigasigacenter@gmail.com</a>.</p>}
     </form>}
     <p role="status" aria-live="polite" className="enrollment-status">{message}</p>
   </>;

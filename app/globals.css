@@ -12,6 +12,7 @@
   --font-handwritten: initial;
   --composition-width: 1400px;
   --page-gutter: 84px;
+  --section-space: 88px;
   --body-size: 1.75rem;
   --body-leading: 1.38;
   --support-size: 1.5rem;
@@ -40,15 +41,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline
 p, h3 { margin: 0; }
 h3 { font-size: var(--item-heading-size); font-weight: 600; line-height: 1.12; }
 
-/* Stage 2: approved 845 × 1862 reference measured at 1400px wide.
-   Section boundaries: About 800, Why Greek 1320, Courses 2104, Footer 2831.
-   Shared gutters stay aligned at wider viewports; sections remain full-width.
-   Mobile composition is deliberately deferred to Stage 10. */
+/* Keep the 1400px composition and aligned gutters; let section content
+   determine height with consistent spacing at each breakpoint. */
 header, section, footer {
   position: relative;
   padding-inline: max(var(--page-gutter), calc((100vw - var(--composition-width)) / 2 + var(--page-gutter)));
 }
-#hero { min-height: 800px; padding-top: 46px; }
+#hero { min-height: 760px; padding-top: 46px; }
 .main-nav {
   display: flex;
   align-items: center;
@@ -80,19 +79,17 @@ header, section, footer {
 #why-greek-heading img { width: 420px; margin-left: -42px; filter: invert(1); }
 #courses-heading img { width: 365px; margin-left: -83px; }
 
-#about { min-height: 520px; padding-bottom: 100px; }
+#about { padding-block: var(--section-space); }
 .about-copy {
   display: grid;
   grid-template-columns: 35.88% 34.25% minmax(0, 1fr);
-  margin-top: 74px;
+  margin-top: 0;
 }
 .about-copy p:first-child { padding-right: 68px; }
 .about-copy p:nth-child(2) { padding-right: 24px; }
 
 #why-greek {
-  min-height: 784px;
-  padding-top: 40px;
-  padding-bottom: 48px;
+  padding-block: var(--section-space);
   background: #080808;
   color: #fff;
 }
@@ -100,8 +97,8 @@ header, section, footer {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
-  margin-inline: -4px -28px;
-  margin-top: -8px;
+  margin-inline: 0;
+  margin-top: 24px;
 }
 .benefits article {
   min-height: 0;
@@ -117,13 +114,13 @@ header, section, footer {
 }
 .benefits h3 { margin-bottom: 0; letter-spacing: -0.04em; }
 .benefits p { font-size: 1.625rem; line-height: 1.35; }
-.why-greek-copy { margin-top: 40px; }
-.why-greek-copy em { display: inline; }
-.why-greek-copy a { text-decoration: underline; text-underline-offset: 4px; }
 em { font-style: italic; }
 
-#courses { min-height: 727px; padding-top: 46px; padding-bottom: 20px; }
-.course-list { margin-top: 26px; }
+#courses { padding-block: var(--section-space); }
+.courses-intro { position: relative; z-index: 1; max-width: 64ch; margin-top: 40px; line-height: 1.5; }
+.courses-intro p + p { margin-top: 24px; }
+.courses-intro a { text-decoration: underline; text-underline-offset: 4px; }
+.course-list { margin-top: 48px; }
 .course-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 140px 160px;
@@ -164,6 +161,8 @@ em { font-style: italic; }
 .enrollment-form label:not(:first-child) { margin-top: 8px; }
 .enrollment-form input, .enrollment-form select, .enrollment-form textarea { width: 100%; min-width: 0; min-height: 48px; border: 1px solid #888; border-radius: 0; padding: 10px; background: #fff; color: #000; font: inherit; }
 .enrollment-form textarea { resize: vertical; }
+.enrollment-contact-alternative { margin-top: 24px; font-family: var(--font-body); line-height: 1.5; overflow-wrap: anywhere; }
+.enrollment-contact-alternative a { text-decoration: underline; text-underline-offset: 3px; }
 .footer-address { margin-top: -10px; font-style: normal; font-size: 0.9rem; line-height: 1.5; overflow-wrap: anywhere; }
 .footer-address a { color: inherit; }
 .enrollment-form :is(input, select, textarea):focus-visible { outline: 2px solid #000; outline-offset: 2px; }
@@ -233,19 +232,19 @@ footer nav a { cursor: pointer; }
 .hero-flower { width: 366px; left: calc(50% - 700px); top: 156px; }
 .hero-snail { width: 550px; right: calc((100% - 1400px) / 2 - 124px); top: 458px; }
 .spray { background-repeat: no-repeat; }
-.hero-blue, .why-blue { background-image: url('/assets/blue_stains.png'); background-size: 480px 240px; width: 240px; height: 200px; }
+.hero-blue { background-image: url('/assets/blue_stains.png'); background-size: 480px 240px; width: 240px; height: 200px; }
 .hero-blue { top: 44px; right: max(38px, calc((100% - 1400px) / 2 + 38px)); }
-.about-pink { width: 180px; height: 156px; top: 0; left: calc(50% + 246px); background-image: url('/assets/mid-pink-stains.png'); background-size: 345px 173px; }
-.why-blue { z-index: 2; right: -95px; bottom: -67px; }
-.courses-peach { width: 218px; top: 46px; left: calc(50% + 14px); transform: rotate(-25deg); }
-.courses-blue { width: 160px; height: 150px; bottom: 0; left: -30px; background-image: url('/assets/blue_stains.png'); background-size: 410px 205px; background-position: right bottom; }
-.main-nav, .section-heading, .about-copy, .benefits, .why-greek-copy, .course-list { position: relative; z-index: 1; }
+.about-pink { width: 180px; height: 156px; top: -100px; left: calc(50% - 400px); background-image: url('/assets/mid-pink-stains.png'); background-size: 345px 173px; }
+.courses-pink { width: 180px; height: 156px; top: 60px; right: max(60px, calc((100% - 1400px) / 2 + 120px)); background-image: url('/assets/mid-pink-stains.png'); background-size: 345px 173px; background-position: right bottom; }
+.courses-blue { width: 160px; height: 150px; bottom: 16px; left: -100px; background-image: url('/assets/blue_stains.png'); background-size: 410px 205px; background-position: right bottom; }
+.main-nav, .section-heading, .about-copy, .benefits, .course-list { position: relative; z-index: 1; }
 
 /* Phone layout: replace the desktop three-column composition with a readable
    single-column flow and keep the hero artwork inside the viewport. */
 @media (max-width: 700px) {
   :root {
     --page-gutter: 24px;
+    --section-space: 56px;
     --body-size: 1.125rem;
     --body-leading: 1.45;
     --support-size: 1.05rem;
@@ -257,7 +256,7 @@ footer nav a { cursor: pointer; }
   header, section, footer { padding-inline: var(--page-gutter); }
 
   #hero {
-    min-height: 660px;
+    min-height: 584px;
     padding-top: 20px;
     overflow: hidden;
   }
@@ -290,25 +289,24 @@ footer nav a { cursor: pointer; }
   }
   .hero-flower, .hero-snail { display: none; }
   .hero-blue {
-    width: 150px;
-    height: 130px;
-    top: 150px;
-    right: -38px;
-    background-size: 300px 150px;
+    width: 90px;
+    height: 60px;
+    top: 112px;
+    right: -20px;
+    background-size: 180px 90px;
   }
 
-  #about { min-height: 0; padding-top: 32px; padding-bottom: 52px; }
+  #about { padding-block: var(--section-space); }
   #about-heading img { width: min(290px, 84vw); margin-left: -34px; }
   .about-copy {
     grid-template-columns: minmax(0, 1fr);
     gap: 18px;
-    margin-top: 28px;
+    margin-top: 0;
   }
   .about-copy p:first-child, .about-copy p:nth-child(2) { padding-right: 0; }
 
-  #why-greek { min-height: 0; padding-top: 36px; padding-bottom: 56px; }
+  #why-greek { padding-block: var(--section-space); }
   #why-greek-heading img { width: min(360px, 96vw); margin-left: -24px; }
-  .why-blue { display: none; }
   .benefits {
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
@@ -322,11 +320,14 @@ footer nav a { cursor: pointer; }
     border-radius: 999px;
   }
   .benefits h3 { font-size: 1.5rem; }
-  .why-greek-copy { margin-top: 28px; }
 
-  #courses { min-height: 0; padding-top: 36px; padding-bottom: 44px; }
+  #courses { padding-block: var(--section-space); }
   #courses-heading img { width: min(310px, 88vw); margin-left: -42px; }
-  .course-list { margin-top: 16px; }
+  .courses-intro { margin-top: 32px; }
+  .course-list { margin-top: 32px; }
+  .courses-pink { width: 72px; height: 70px; top: 56px; right: 8px; background-size: 144px 72px; }
+  .about-pink { top: -52px; left: 24px; right: auto; width: 70px; height: 70px; background-size: 140px 70px; }
+  .courses-blue { width: 80px; left: -60px; }
   .course-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
@@ -383,5 +384,22 @@ footer nav a { cursor: pointer; }
   .course-row strong { font-size: 1.45rem; }
 }
 
-/* Visible text heading replaces the old WHY GREEK? PNG. */
-.why-greek-text-heading { width: auto; line-height: 1.05; font-size: clamp(2.4rem, 5vw, 4.7rem); font-weight: 600; letter-spacing: -0.055em; margin: 0 0 18px; }
+/* Intermediate widths retain the composition without desktop-size overlaps. */
+@media (min-width: 701px) and (max-width: 1100px) {
+  :root { --page-gutter: 48px; --section-space: 72px; --body-size: 1.375rem; --support-size: 1.2rem; --label-size: 1.1rem; --item-heading-size: 1.8rem; }
+  #hero { min-height: 680px; }
+  .hero-logo { width: 440px; left: calc(50% - 220px); top: 160px; }
+  .hero-descriptor { width: 380px; left: calc(50% - 190px); top: 470px; }
+  .hero-flower { width: 260px; left: -80px; }
+  .hero-snail { width: 350px; right: -100px; top: 470px; }
+  .hero-blue { width: 170px; height: 150px; background-size: 340px 170px; right: 0; top: 90px; }
+  .about-copy { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .about-copy p:first-child, .about-copy p:nth-child(2) { padding-right: 0; }
+  .about-pink { left: 48px; right: auto; top: -84px; width: 120px; height: 100px; background-size: 240px 120px; }
+  .benefits { gap: 20px; }
+  .benefits h3 { font-size: clamp(1.25rem, 2.8vw, 1.8rem); }
+  .course-row { grid-template-columns: minmax(0, 1fr) 90px 130px; gap: 20px; padding-inline: 0; }
+  .course-details { margin-left: 0; }
+  footer nav { gap: 24px; flex-wrap: wrap; }
+  .footer-logo { width: 200px; }
+}
