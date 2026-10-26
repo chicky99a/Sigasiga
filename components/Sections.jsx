@@ -4,9 +4,9 @@ import CourseList from './CourseList';
 export function Hero() {
   return <header id="hero" aria-label="Siga Siga">
     <nav className="main-nav" aria-label="Main navigation">
-      <a href="#about">ABOUT →</a>
-      <a href="#courses">COURSES →</a>
-      <a href="/enroll">CONTACT →</a>
+      <a href="#about">ABOUT <span className="nav-arrow" aria-hidden="true">→</span></a>
+      <a href="#courses">COURSES <span className="nav-arrow" aria-hidden="true">→</span></a>
+      <a href="/enroll">CONTACT <span className="nav-arrow" aria-hidden="true">→</span></a>
     </nav>
     <h1 className="sr-only">Siga Siga — Greek Language & Culture Center</h1>
     <img className="hero-logo" src="/assets/ChatGPT Image Sep 7, 2026, 05_59_42 PM.png" alt="" />
@@ -60,7 +60,7 @@ export function Footer() {
       <nav aria-label="Social and contact">
         <a href="https://www.instagram.com/siga__siga_language_center/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href="https://www.facebook.com/sigasigaculture" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
-        <a href="/enroll">CONTACT →</a>
+        <a href="/enroll">CONTACT</a>
       </nav>
       <div className="footer-address" aria-hidden="true">&nbsp;</div>
     </div>
