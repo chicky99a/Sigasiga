@@ -14,7 +14,6 @@ export function Hero() {
     <img className="decoration hero-flower" src="/assets/red-flower.png" alt="" />
     <span className="decoration spray hero-blue" aria-hidden="true" />
     <img className="decoration hero-snail" src="/assets/snail_tran.png" alt="" />
-    <a className="level-test" href="/level-test/index.html">TAKE A LEVEL TEST →</a>
   </header>;
 }
 
