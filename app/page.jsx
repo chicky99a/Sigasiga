@@ -9,5 +9,6 @@ export default function Home() {
       <Courses />
     </main>
     <Footer />
+    <a className="level-test" href="/level-test/index.html">TAKE A LEVEL TEST →</a>
   </>;
 }
