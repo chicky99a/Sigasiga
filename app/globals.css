@@ -403,3 +403,118 @@ footer nav a { cursor: pointer; }
   footer nav { gap: 24px; flex-wrap: wrap; }
   .footer-logo { width: 200px; }
 }
+
+
+/* Mobile layout refinements: preserve desktop artwork and positioning. */
+@media (max-width: 700px) {
+  #hero {
+    min-height: 655px;
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 6px;
+    margin: 0;
+    font-size: clamp(0.68rem, 3.05vw, 0.9rem);
+  }
+  .main-nav a,
+  .main-nav :nth-child(2),
+  .main-nav :nth-child(3) {
+    min-width: 0;
+    width: 100%;
+    min-height: 44px;
+    white-space: nowrap;
+    background-size: 110% 145%;
+  }
+  .main-nav .nav-arrow { display: none; }
+
+  .hero-logo {
+    width: min(88vw, 360px);
+    top: 132px;
+  }
+  .hero-descriptor {
+    width: min(84vw, 350px);
+    top: 350px;
+  }
+  .hero-flower { display: none; }
+  .hero-snail {
+    display: block;
+    width: clamp(145px, 44vw, 205px);
+    height: auto;
+    right: -8px;
+    top: 448px;
+    z-index: 2;
+  }
+  .hero-blue {
+    top: 70px;
+    right: 4px;
+    width: 95px;
+    height: 95px;
+    background-size: 190px 95px;
+    background-position: left center;
+    -webkit-mask-image: radial-gradient(ellipse 48% 48% at center, #000 75%, transparent 100%);
+    mask-image: radial-gradient(ellipse 48% 48% at center, #000 75%, transparent 100%);
+  }
+
+  .level-test {
+    position: fixed;
+    z-index: 30;
+    right: 0;
+    top: 34%;
+    bottom: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    border-radius: 0 14px 14px 0;
+    padding: 16px 9px;
+    font-size: clamp(0.78rem, 2.9vw, 0.94rem);
+    box-shadow: none;
+  }
+
+  footer {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 215px;
+    padding-block: 32px;
+  }
+  .footer-contact {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  footer nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding-top: 0;
+  }
+  footer nav :is(a,button) {
+    text-align: left;
+    white-space: nowrap;
+    font-size: clamp(0.78rem, 3.3vw, 0.94rem);
+  }
+  .footer-address { display: none; }
+  .footer-logo {
+    width: clamp(132px, 41vw, 190px);
+    max-width: 49%;
+    margin: 0 0 0 auto;
+    align-self: center;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .main-nav { gap: 3px; font-size: 0.68rem; }
+  .main-nav a, .main-nav :nth-child(2), .main-nav :nth-child(3) { min-height: 40px; }
+  .hero-snail { top: 428px; }
+  footer { gap: 6px; }
+  footer nav { gap: 13px; }
+}
