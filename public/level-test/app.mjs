@@ -46,7 +46,7 @@ function renderWelcome(){
 }
 function advance(skipping=false){if(screen!=='question'||answers[index]===null||(!skipping&&answers[index]===SKIPPED))return;if(!skipping)consecutiveSkips=0;if(index===questions.length-1){screen='contact';submissionId=null;}else index++;render(true,true);}
 function renderContact(){
- app.innerHTML=`<section class="contact-screen"><p class="eyebrow">YOUR GREEK LEVEL</p><h1 id="focus-title" tabindex="-1">WHERE SHOULD WE<br>SEND YOUR RESULT?</h1><p class="intro">Enter your details to get your Greek level result.</p><form id="contact"><div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" maxlength="100" required value="${escape(contact.name)}"></div><div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required value="${escape(contact.email)}"></div><div class="field"><label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" value="${escape(contact.phone)}"></div><p class="form-error" id="form-error" role="alert"></p><div class="controls"><button type="button" class="back" id="back">← BACK</button><button type="submit" class="lime wide" id="submit">SEE MY RESULT →</button></div></form></section>`;
+ app.innerHTML=`<section class="contact-screen"><p class="eyebrow">YOUR GREEK LEVEL</p><h1 id="focus-title" tabindex="-1">WHERE SHOULD WE<br>SEND YOUR RESULT?</h1><p class="intro">Enter your details to get your Greek level result.</p><form id="contact"><div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" maxlength="100" required value="${escape(contact.name)}"></div><div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required value="${escape(contact.email)}"></div><div class="field"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required value="${escape(contact.phone)}"></div><p class="form-error" id="form-error" role="alert"></p><div class="controls"><button type="button" class="back" id="back">← BACK</button><button type="submit" class="lime wide" id="submit">SEE MY RESULT →</button></div></form></section>`;
  app.querySelector('#contact').oninput=e=>{if(e.target.name)contact[e.target.name]=e.target.value;};
  app.querySelector('#back').onclick=()=>{screen='question';render();};
  app.querySelector('#contact').onsubmit=submit;
@@ -59,6 +59,7 @@ async function submit(e){
  contact.name=contact.name.trim();contact.email=contact.email.trim();contact.phone=contact.phone.trim();
  const error=app.querySelector('#form-error');
  if(!contact.name){error.textContent='Please enter your name.';return;}
+ if(!contact.phone){error.textContent='Please enter your phone number.';return;}
  if(!submissionEndpoint){error.textContent='Result delivery is not connected yet. Your answers are still here; please keep this page open.';return;}
  busy=true;submissionId??=crypto.randomUUID();
  const controls=[...form.querySelectorAll('input,button')];controls.forEach(c=>c.disabled=true);
