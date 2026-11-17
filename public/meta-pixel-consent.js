@@ -60,7 +60,7 @@
     control.setAttribute('aria-label', 'Change marketing cookie preferences');
     control.style.cssText = 'position:fixed;bottom:5px;right:8px;z-index:2147483646;border:0;background:#fff;color:#333;padding:3px 5px;font:11px Arial,sans-serif;text-decoration:underline;cursor:pointer;';
     control.addEventListener('click', function () {
-      saveConsent('rejected');
+      try { localStorage.removeItem(KEY); } catch (_) {}
       // An already loaded pixel cannot be unloaded without reloading the page.
       location.reload();
     });
