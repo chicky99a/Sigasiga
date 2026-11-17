@@ -22,7 +22,7 @@
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
   }
-  function makeButton(label, onClick) {
+  // Only track conversions after marketing consent has been granted.\n  window.sigaTrackMetaEvent = function (eventName) {\n    if (readConsent() !== 'accepted') return;\n    loadPixel();\n    if (typeof window.fbq === 'function') window.fbq('track', eventName);\n  };\n  function makeButton(label, onClick) {
     var button = document.createElement('button');
     button.type = 'button';
     button.textContent = label;
