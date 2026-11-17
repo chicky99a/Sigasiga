@@ -70,7 +70,8 @@ async function submit(e){
   const data=await response.json();
   if(!data.ok)throw Error(data.error||'Could not send your result. Please try again.');
   if(!data.result?.level||!Array.isArray(data.result.counts))throw Error('Unexpected response. Please try again.');
-  result=data.result;screen='result';render();\n  window.sigaTrackMetaEvent?.('Lead');
+  result=data.result;screen='result';render();
+  window.sigaTrackMetaEvent?.('Lead');
  }catch(err){error.textContent=err.name==='TimeoutError'?'This is taking longer than expected. Please try again; your answers are saved on this page.':err.message;controls.forEach(c=>c.disabled=false);button.textContent='SEE MY RESULT →';form.removeAttribute('aria-busy');}
  finally{busy=false;}
 }
