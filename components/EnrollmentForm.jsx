@@ -27,7 +27,8 @@ export default function EnrollmentForm({ initialCourseId = '', levelTestUrl = '/
       });
       const result = await response.json();
       if (!response.ok || !result.ok) throw new Error(result.message || 'We could not confirm your request. Please try again.');
-      window.sigaTrackMetaEvent?.('Contact');\n      setSubmitted(true);
+      window.sigaTrackMetaEvent?.('Contact');
+      setSubmitted(true);
       setMessage(result.message);
     } catch (error) {
       setMessage(error.message || 'We could not confirm your request. Please try again.');
