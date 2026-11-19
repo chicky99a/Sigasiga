@@ -393,7 +393,7 @@ export const questions = [
       "δημοσίευσαν"
     ],
     "correct": 2
-  }
+  },
 
   {
     "id": 33,
