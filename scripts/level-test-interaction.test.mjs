@@ -14,6 +14,6 @@ click('#skip');click('#skip');assert.equal(get('consecutiveSkips'),2);click('#sk
 app.querySelector('form').onchange({target:{value:'1'}});assert.equal(get('consecutiveSkips'),0);assert.equal(app.querySelector('.early-finish').hidden,true);
 vm.runInContext('advance()',ctx);click('#skip');click('#skip');click('#skip');click('#finish');assert.equal(get('screen'),'contact');assert.equal(get('answers.filter(a=>a===SKIPPED).length'),6);assert.equal(get('answers.slice(index).every(a=>a===null)'),true);
 click('#back');assert.equal(get('screen'),'question');
-vm.runInContext("answers=Array(32).fill(null);index=0;screen='question';consecutiveSkips=0;render()",ctx);
+vm.runInContext("answers=Array(36).fill(null);index=0;screen='question';consecutiveSkips=0;render()",ctx);
 click('#skip');click('#back');click('#skip');assert.equal(get('consecutiveSkips'),1);
 console.log('Question advance, skip streak/reset, optional early finish, contact back and revisited skips passed. No external submissions.');
